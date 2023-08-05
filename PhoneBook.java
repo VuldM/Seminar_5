@@ -1,30 +1,30 @@
-// Реализуйте структуру телефонной книги с помощью HashMap, учитывая, что 1 человек может иметь несколько телефонов.
+
 import java.util.LinkedList;
-import java.util.HashMap;
+import java.util.Comparator;
+//import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 public class PhoneBook{
     public static void main(String[] args) {
-        Map<String, LinkedList<String>> phoneDirect = new HashMap<>();
-        addPhone("Косолапов", "8912123456", phoneDirect);
-        addPhone("Корычев", "8908325641", phoneDirect);
-        addPhone("Оплеснин", "8922546213", phoneDirect);
-        addPhone("Ципелев", "8904562134", phoneDirect);
-        addPhone("Косолапов", "8956231524", phoneDirect);
-        addPhone("Оплеснин", "8904562315", phoneDirect);
-        addPhone("Ципелев", "8650213548", phoneDirect);
-        addPhone("Красильников", "8904455426", phoneDirect);
-        addPhone("Косолапов", "8956254236", phoneDirect);
-        addPhone("Оплеснин", "890458542", phoneDirect);
-        addPhone("Ципелев", "8650216523", phoneDirect);
-        addPhone("Косолапов", "8854123652", phoneDirect);
-        addPhone("Красильников", "8904452365", phoneDirect);
+        Map<String, LinkedList<Integer>> phoneDirect = new TreeMap<>(Comparator.reverseOrder());
+        addPhone("Косолапов", 891212345, phoneDirect);
+        addPhone("Корычев", 890832564, phoneDirect);
+        addPhone("Оплеснин", 892254621, phoneDirect);
+        addPhone("Ципелев", 890456213, phoneDirect);
+        addPhone("Косолапов", 895623152, phoneDirect);
+        addPhone("Оплеснин", 890456231, phoneDirect);
+        addPhone("Ципелев", 865021354, phoneDirect);
+        addPhone("Красильников", 890445426, phoneDirect);
+        addPhone("Оплеснин", 89045852, phoneDirect);
+        addPhone("Ципелев", 865021653, phoneDirect);
+        addPhone("Красильников", 890442365, phoneDirect);
         printPhoneDirect(phoneDirect);
     }
 
-    public static void addPhone(String key, String value, Map<String, LinkedList<String>> dict){
-        LinkedList<String> list = new LinkedList<>();
+    public static void addPhone(String key, Integer value, Map<String, LinkedList<Integer>> dict){
+        LinkedList<Integer> list = new LinkedList<>();
         if (dict.containsKey(key)) {
             dict.get(key).add(value);
 
@@ -35,7 +35,7 @@ public class PhoneBook{
         }
 
     }
-    public static void printPhoneDirect(Map<String, LinkedList<String>> dict){
+    public static void printPhoneDirect(Map<String, LinkedList<Integer>> dict){
         for (var item : dict.entrySet()) {
             String nums = "";
             for(var el: item.getValue()){
